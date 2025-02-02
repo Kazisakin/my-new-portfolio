@@ -1,12 +1,22 @@
-// This is front-end code (React)
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { ThemeProvider } from './context/ThemeContext';
+// src/index.js
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import { ThemeContextProvider } from "./context/ThemeContext";
+import process from "process";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Fix Webpack 5 missing process polyfill
+window.process = process;
+
+// Get the root container
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+// Render the app inside ThemeContextProvider
 root.render(
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>
+  <React.StrictMode>
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
+  </React.StrictMode>
 );
