@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import './SinglePageNav.css';
-import { FaBars, FaTimes } from 'react-icons/fa'; // hamburger icons
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 function SinglePageNav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,18 +14,15 @@ function SinglePageNav() {
     { to: 'about', label: 'About' },
     { to: 'education', label: 'Education' },
     { to: 'experience', label: 'Experience' },
-    { to: 'skills', label: 'Skills' },
     { to: 'projects', label: 'Projects' },
-    { to: 'awards', label: 'Awards' },
-    { to: 'activities', label: 'Activities' },
     { to: 'contact', label: 'Contact' },
   ];
 
   return (
     <header className="single-nav-header">
       <div className="nav-container">
-        <div className="logo">MyCV</div>
-        
+        <div className="logo">MySite</div>
+
         <div className="menu-icon" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>

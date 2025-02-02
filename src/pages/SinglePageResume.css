@@ -1,62 +1,59 @@
 /* SinglePageResume.css */
-
-/* Container for the entire single-page resume */
 .single-page-container {
-    width: 100%;
-    margin: 0 auto;
     font-family: Arial, sans-serif;
   }
   
-  /* A reusable .section style for consistent spacing */
+  /* Generic .section styling */
   .section {
-    min-height: 100vh; /* optional: each section fills the viewport */
+    min-height: 100vh; /* optional: each section ~ full screen */
     padding: 3rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    scroll-margin-top: 80px; /* to prevent content from hiding under sticky nav */
+    scroll-margin-top: 80px; /* ensures we don't hide content behind nav */
   }
   
-  /* Example hero styling */
+  /* Example hero section styling */
   .hero-section {
     background: linear-gradient(
-        rgba(0,0,0,0.4),
-        rgba(0,0,0,0.5)
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.3)
       ),
       url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&w=1600');
     background-size: cover;
     background-position: center;
-    color: #fff;
     text-align: center;
+    color: #fff;
   }
   
   .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
-  
-  .hero-content .highlight {
-    color: #64ffda; /* accent color, adjust as you like */
+  .highlight {
+    color: #64ffda; /* accent color */
+  }
+  .hero-content p {
+    max-width: 600px;
+    margin: 0 auto;
   }
   
-  /* Standard content styling for each section */
+  /* .section-content for each imported section component */
   .section-content {
     max-width: 800px;
     margin: 0 auto;
-    color: #333; /* for default text color, unless you want a dark background */
+    color: #333;
   }
   
   .section-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1e1e1e;
     text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
   
-  /* Example list styling for bullet points */
-  .work-item, .project-item, .activity-item {
-    margin-bottom: 2rem;
+  .education-item, .work-item, .project-item {
+    margin-bottom: 1.5rem;
   }
   
   ul {
@@ -64,22 +61,10 @@
     margin-left: 1.5rem;
   }
   
-  /* Skills list as a simple block or grid */
-  .skills-list {
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 0;
-  }
-  .skills-list li {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Contact section link styling */
-  .contact-section a {
-    color: #0077cc;
-    text-decoration: none;
-  }
-  .contact-section a:hover {
-    text-decoration: underline;
+  /* Adjust spacing for smaller screens */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2rem;
+    }
   }
   
