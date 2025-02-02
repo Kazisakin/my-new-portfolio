@@ -1,0 +1,117 @@
+/* App.css */
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Basic resets */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header / Navbar */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  z-index: 999;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #64ffda; /* highlight color (greenish) */
+}
+
+/* Section style */
+.section {
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+/* Section headings */
+.section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+/* Content containers in each section */
+.section-content {
+  margin-bottom: 2rem;
+}
+
+/* Date range style (like "May 2023 - Present") */
+.date-range {
+  font-style: italic;
+  color: #777;
+}
+
+/* For bullet points in Work Experience, etc. */
+.section-content ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.section-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Skills list styling */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+
+.skills-list li {
+  background: #f9f9f9;
+  border-left: 4px solid #333;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+/* Contact link */
+.section-content a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.section-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive for smaller screens */
+@media (min-width: 768px) {
+  .skills-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+}
+
+/* You can tweak colors, fonts, spacing to match your brand! */

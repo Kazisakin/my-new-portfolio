@@ -1,0 +1,27 @@
+.skills-page {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .skill-card {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-left: 3px solid #aaa; /* a simple highlight */
+    border-radius: 3px;
+  }
+  
+  .skill-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-card p {
+    line-height: 1.4;
+  }
+  

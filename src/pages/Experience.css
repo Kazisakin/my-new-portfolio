@@ -1,0 +1,24 @@
+.experience-page {
+    padding: 2rem;
+  }
+  
+  .job-item {
+    margin-bottom: 2rem;
+  }
+  
+  .job-item h2 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .job-item p {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  
+  .job-item ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    line-height: 1.6;
+  }
+  

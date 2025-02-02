@@ -1,0 +1,13 @@
+.projects-page {
+    padding: 2rem;
+  }
+  
+  .project-item {
+    margin-bottom: 2rem;
+  }
+  
+  .project-item h2 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
