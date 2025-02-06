@@ -1,18 +1,21 @@
-export const darkTheme = {
-    background: "#0a192f",      // Primary Background
-    cardBackground: "#112240",  // Slightly lighter navy
-    text: "#8892b0",            // Muted slate color
-    accent: "#64ffda",          // Neon green
-    white: "#e6f1ff",           // White text for headings
-    hover: "rgba(100, 255, 218, 0.2)"
-  };
-  
-  export const lightTheme = {
-    background: "#f4f4f4",      // Light background
+// src/Theme.js
+export const theme = {
+  dark: {
+    background: "#0a192f",
+    cardBackground: "#112240",
+    text: "#8892b0",
+    accent: "#64ffda",
+    leftBg: "#0a192f",
+    navBg: "rgba(10, 25, 47, 0.95)",
+    borderColor: "#233554"
+  },
+  light: {
+    background: "#f4f4f4",
     cardBackground: "#ffffff",
     text: "#333333",
-    accent: "#64ffda",
-    white: "#e6f1ff",
-    hover: "rgba(100, 255, 218, 0.2)"
-  };
-  
+    accent: "#007acc",
+    leftBg: "#ffffff",
+    navBg: "rgba(244, 244, 244, 0.95)",
+    borderColor: "#ccc"
+  }
+};

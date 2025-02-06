@@ -6,17 +6,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "mongodb": "3.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.10",
+    "react-lazy-load-image-component": "^1.5.5",
+    "react-scripts": "^3.0.1",
     "react-scroll": "^1.8.7",
-    "react-lazy-load-image-component": "^1.5.5"
-    
+    "styled-components": "^5.3.10"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  } 
+  }
 }

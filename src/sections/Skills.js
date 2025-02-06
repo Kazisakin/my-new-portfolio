@@ -1,108 +1,104 @@
+// src/sections/Skills.js
 import React from "react";
 import styled from "styled-components";
-import { DiJavascript1, DiJava, DiPhp, DiPython, DiReact } from "react-icons/di";
-import { SiDjango, SiMysql, SiMongodb, SiFirebase, SiDocker, SiGithub, SiFigma } from "react-icons/si";
-import { motion } from "framer-motion";
 
-// Styled Components
-const SkillsContainer = styled.section`
-  padding: 4rem 2rem;
+const SkillsContainer = styled.div`
+  color: ${({ theme }) => theme.text};
+  padding: 1rem;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 1.8rem;
+  color: ${({ theme }) => theme.accent};
+  margin-bottom: 1rem;
   text-align: center;
-  background-color: var(--color-bg);
-  overflow: hidden;
 `;
 
-const Title = styled.h2`
-  font-size: 2rem;
-  color: var(--color-white);
-  margin-bottom: 2rem;
+const CategoryTitle = styled.h3`
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: ${({ theme }) => theme.accent};
 `;
 
-// Marquee Wrapper (Smooth Scrolling)
-const MarqueeWrapper = styled.div`
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-`;
-
-const MarqueeContent = styled(motion.div)`
+const SkillList = styled.ul`
+  list-style: none;
+  padding: 0;
   display: flex;
-  gap: 1.2rem;
-  width: fit-content;
-  cursor: grab;
-  user-select: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 
-const SkillCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.7rem;
-  border-radius: 8px;
-  min-width: 80px;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 4px 12px rgba(100, 255, 218, 0.3);
-  }
-
-  svg {
-    font-size: 1.3rem;
-    color: var(--color-accent);
-  }
-
-  span {
-    font-size: 0.8rem;
-    color: var(--color-text);
-    margin-top: 0.3rem;
-  }
+const SkillItem = styled.li`
+  background: ${({ theme }) => theme.cardBackground};
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
 `;
-
-// Skills Data
-const skills = [
-  { name: "JavaScript", icon: <DiJavascript1 /> },
-  { name: "Java", icon: <DiJava /> },
-  { name: "Python", icon: <DiPython /> },
-  { name: "PHP", icon: <DiPhp /> },
-  { name: "React", icon: <DiReact /> },
-  { name: "Django", icon: <SiDjango /> },
-  { name: "MySQL", icon: <SiMysql /> },
-  { name: "MongoDB", icon: <SiMongodb /> },
-  { name: "Firebase", icon: <SiFirebase /> },
-  { name: "Docker", icon: <SiDocker /> },
-  { name: "GitHub", icon: <SiGithub /> },
-  { name: "Figma", icon: <SiFigma /> },
-];
 
 export default function Skills() {
   return (
     <SkillsContainer>
-      <Title>Skills</Title>
-      <MarqueeWrapper>
-        <MarqueeContent
-          drag="x"
-          dragConstraints={{ left: -400, right: 0 }}
-          animate={{ x: [0, -400] }}
-          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-          whileHover={{ animationPlayState: "paused" }}
-        >
-          {skills.map((skill, index) => (
-            <SkillCard key={index}>
-              {skill.icon}
-              <span>{skill.name}</span>
-            </SkillCard>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {skills.map((skill, index) => (
-            <SkillCard key={`dup-${index}`}>
-              {skill.icon}
-              <span>{skill.name}</span>
-            </SkillCard>
-          ))}
-        </MarqueeContent>
-      </MarqueeWrapper>
+      <SectionTitle>Skills</SectionTitle>
+      
+      <CategoryTitle>Programming Languages</CategoryTitle>
+      <SkillList>
+        <SkillItem>Java</SkillItem>
+        <SkillItem>Python</SkillItem>
+        <SkillItem>C++</SkillItem>
+        <SkillItem>JavaScript</SkillItem>
+        <SkillItem>R</SkillItem>
+        <SkillItem>PHP</SkillItem>
+      </SkillList>
+      
+      <CategoryTitle>Web Development</CategoryTitle>
+      <SkillList>
+        <SkillItem>HTML</SkillItem>
+        <SkillItem>CSS</SkillItem>
+        <SkillItem>Bootstrap</SkillItem>
+        <SkillItem>React.js</SkillItem>
+        <SkillItem>Django</SkillItem>
+        <SkillItem>MERN Stack</SkillItem>
+        <SkillItem>REST APIs</SkillItem>
+      </SkillList>
+      
+      <CategoryTitle>Databases</CategoryTitle>
+      <SkillList>
+        <SkillItem>PostgreSQL</SkillItem>
+        <SkillItem>MySQL</SkillItem>
+        <SkillItem>MongoDB</SkillItem>
+        <SkillItem>Redis</SkillItem>
+      </SkillList>
+      
+      <CategoryTitle>Data Analysis & Machine Learning</CategoryTitle>
+      <SkillList>
+        <SkillItem>Pandas</SkillItem>
+        <SkillItem>NumPy</SkillItem>
+        <SkillItem>Matplotlib</SkillItem>
+        <SkillItem>TensorFlow</SkillItem>
+        <SkillItem>Power BI</SkillItem>
+        <SkillItem>Tableau</SkillItem>
+        <SkillItem>Lucidchart</SkillItem>
+      </SkillList>
+      
+      <CategoryTitle>DevOps & Tools</CategoryTitle>
+      <SkillList>
+        <SkillItem>Docker</SkillItem>
+        <SkillItem>Jenkins</SkillItem>
+        <SkillItem>Nginx</SkillItem>
+        <SkillItem>GitHub</SkillItem>
+        <SkillItem>Apache POI</SkillItem>
+        <SkillItem>Firebase</SkillItem>
+        <SkillItem>Spring Boot</SkillItem>
+      </SkillList>
+      
+      <CategoryTitle>Design & Documentation</CategoryTitle>
+      <SkillList>
+        <SkillItem>Figma</SkillItem>
+        <SkillItem>Adobe Creative Suite</SkillItem>
+        <SkillItem>WordPress</SkillItem>
+        <SkillItem>AutoCAD</SkillItem>
+        <SkillItem>Microsoft 365</SkillItem>
+      </SkillList>
     </SkillsContainer>
   );
 }

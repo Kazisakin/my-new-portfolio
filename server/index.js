@@ -12,7 +12,7 @@ app.use(express.json());
 
 // MONGODB Atlas connection
 mongoose
-  .connect("mongodb+srv://kazisakin:Mywork3695@cluster0.kgw54.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect("mongodb+srv://kazisakin:Myworkpass3695@cluster0.kgw54.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((err) => console.error("MongoDB connection error:", err));
 

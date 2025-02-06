@@ -1,170 +1,171 @@
+// src/sections/Experience.js
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
-// Section container with a gradient background
-const ExperienceSection = styled.section`
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0a192f, #112240);
-  padding: 6rem 2rem;
-  @media (max-width: 768px) {
-    padding: 4rem 1rem;
-  }
+const ExperienceContainer = styled.div`
+  color: ${({ theme }) => theme.text};
+  padding: 1rem;
 `;
 
-// Timeline container for organizing experience cards
-const TimelineContainer = styled.div`
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-left: 40px;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(100, 255, 218, 0.2);
-  }
+const SectionTitle = styled.h2`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.accent};
+  margin: 1.5rem 0 1rem;
+  text-align: center;
 `;
 
-// Each timeline item container
-const TimelineItem = styled.div`
-  position: relative;
+const ExperienceSection = styled.div`
   margin-bottom: 2rem;
 `;
 
-// Animated dot for the timeline
-const Dot = styled(motion.div)`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #64ffda;
-  position: absolute;
-  left: 12px;
-  top: 1.2rem;
+const ExperienceItem = styled.div`
+  margin-bottom: 1.5rem;
 `;
 
-// Experience card with hover and animation effects
-const ExperienceCard = styled(motion.div)`
-  background: rgba(10, 25, 47, 0.8);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  box-shadow: 0 8px 16px rgba(2, 12, 27, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(2, 12, 27, 0.4);
-  }
-
-  h3 {
-    color: #64ffda;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  h4 {
-    color: #ccd6f6;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-
-  p {
-    color: #8892b0;
-    line-height: 1.6;
-    font-size: 1rem;
-  }
+const Position = styled.h3`
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
 `;
 
-// Section title with animation
-const SectionTitle = styled(motion.h2)`
-  color: #64ffda;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
+const Company = styled.p`
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+`;
+
+const Duration = styled.p`
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+`;
+
+const DescriptionList = styled.ul`
+  list-style: disc;
+  margin-left: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 `;
 
 export default function Experience() {
-  const experiences = [
-    {
-      company: "Tech Corp",
-      role: "Front-End Developer",
-      date: "2023 - Present",
-      responsibilities:
-        "Implemented new features in React, improved performance, and collaborated with design teams.",
-    },
-    {
-      company: "Dev Solutions",
-      role: "Full-Stack Developer",
-      date: "2021 - 2023",
-      responsibilities:
-        "Built REST APIs with Node.js/Express, integrated databases, and contributed to front-end tasks.",
-    },
-  ];
-
-  // Animation variants for the dot (scale up on hover)
-  const dotVariants = {
-    initial: { scale: 1 },
-    hover: { scale: 1.5, transition: { duration: 0.3 } },
-  };
-
-  // Card animation variants
-  const cardVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay: i * 0.2 },
-    }),
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 },
-  };
-
   return (
-    <ExperienceSection id="experience">
-      <SectionTitle
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        Experience
-      </SectionTitle>
-      <TimelineContainer>
-        {experiences.map((exp, index) => (
-          <TimelineItem key={index}>
-            <Dot
-              variants={dotVariants}
-              initial="initial"
-              whileHover="hover"
-            />
-            <ExperienceCard
-              custom={index}
-              variants={cardVariants}
-              initial="initial"
-              whileInView="animate"
-              whileHover="whileHover"
-              whileTap="whileTap"
-              transition={{ type: "spring", stiffness: 100 }}
-              viewport={{ once: true }}
-            >
-              <h3>{exp.company}</h3>
-              <h4>
-                {exp.role} | {exp.date}
-              </h4>
-              <p>{exp.responsibilities}</p>
-            </ExperienceCard>
-          </TimelineItem>
-        ))}
-      </TimelineContainer>
-    </ExperienceSection>
+    <ExperienceContainer>
+      {/* Work Experience */}
+      <SectionTitle>Work Experience</SectionTitle>
+      <ExperienceSection>
+        <ExperienceItem>
+          <Position>In-Bound Customer Service Representative</Position>
+          <Company>IO Solutions, Fredericton, New Brunswick</Company>
+          <Duration>May 2023 – Present</Duration>
+          <DescriptionList>
+            <li>Handled 30+ daily interactions, delivering technical solutions and personalized support.</li>
+            <li>Provided expert support for 50+ products and resolved complex inquiries.</li>
+            <li>Troubleshot applications, resolved network issues, and assisted with Wi‑Fi/TV setups.</li>
+            <li>Coordinated with Fido, Rogers, Cityfone, and Shaw to reduce downtime by 4 hours.</li>
+            <li>Achieved top sales records and earned consecutive performance awards.</li>
+          </DescriptionList>
+        </ExperienceItem>
+        <ExperienceItem>
+          <Position>Web and Creative Content Designer</Position>
+          <Company>ROBOFLIGHT, Fredericton, New Brunswick</Company>
+          <Duration>December 2023 – September 2024</Duration>
+          <DescriptionList>
+            <li>Created and implemented a fully functional, visually optimized website, increasing online traffic by 200%.</li>
+            <li>Conducted keyword research and enhanced content using advanced SEO strategies.</li>
+            <li>Designed logos, banners, and digital assets to establish a cohesive brand identity.</li>
+            <li>Developed reusable component libraries for course materials, streamlining production of 25+ marketing assets.</li>
+          </DescriptionList>
+        </ExperienceItem>
+        <ExperienceItem>
+          <Position>Security Officer</Position>
+          <Company>Securitas, Fredericton, New Brunswick</Company>
+          <Duration>April 2023 – Present</Duration>
+          <DescriptionList>
+            <li>Managed access control, surveillance, and incident response using Siemens' SiPass system.</li>
+            <li>Conducted routine inspections and logged incidents to ensure operational continuity.</li>
+            <li>Enforced security protocols and coordinated with visitors and staff to mitigate risks.</li>
+          </DescriptionList>
+        </ExperienceItem>
+      </ExperienceSection>
+
+      {/* School Experience */}
+      <SectionTitle>School Experience</SectionTitle>
+      <ExperienceSection>
+        <ExperienceItem>
+          <Position>Introduction to Computer Programming II (in Java)</Position>
+          <Company>University of New Brunswick, Fredericton</Company>
+          <Duration>May 2024 – September 2024</Duration>
+          <DescriptionList>
+            <li>Enhanced Java fundamentals including OOP, generics, and exception handling.</li>
+            <li>Developed interactive GUIs using JavaFX with an event‑driven MVC architecture.</li>
+            <li>Improved debugging and version control skills using IntelliJ.</li>
+          </DescriptionList>
+        </ExperienceItem>
+      </ExperienceSection>
+
+      {/* Certifications & Awards */}
+      <SectionTitle>Certifications & Awards</SectionTitle>
+      <ExperienceSection>
+        <ExperienceItem>
+          <Position>R Programming Boot Camp</Position>
+          <Company>Bangladesh University of Professional Economics Club</Company>
+          <Duration>2022</Duration>
+          <DescriptionList>
+            <li>Gained proficiency in R for data cleaning, statistical analysis, and visualization.</li>
+          </DescriptionList>
+        </ExperienceItem>
+        <ExperienceItem>
+          <Position>Talent Hunt - Graphic Design</Position>
+          <Company>Adamjee Cantonment College</Company>
+          <Duration>2020</Duration>
+          <DescriptionList>
+            <li>Secured first place in Graphic Design, demonstrating exceptional creativity.</li>
+          </DescriptionList>
+        </ExperienceItem>
+        <ExperienceItem>
+          <Position>Advanced WordPress Development</Position>
+          <Company>SoftTech-IT</Company>
+          <Duration>2018</Duration>
+          <DescriptionList>
+            <li>Acquired comprehensive skills in web development, including HTML, CSS, JavaScript, PHP, and theme customization.</li>
+          </DescriptionList>
+        </ExperienceItem>
+      </ExperienceSection>
+
+      {/* Co‑Curricular Activities */}
+      <SectionTitle>Co‑Curricular Activities</SectionTitle>
+      <ExperienceSection>
+        <ExperienceItem>
+          <Position>Webmaster</Position>
+          <Company>Bangladesh Student Society, UNB</Company>
+          <Duration>September 2023 – October 2024</Duration>
+          <DescriptionList>
+            <li>Launched the first WordPress website, improving digital presence and accessibility.</li>
+            <li>Streamlined event and member registration processes.</li>
+            <li>Managed CMS content and enhanced social media engagement.</li>
+          </DescriptionList>
+        </ExperienceItem>
+        <ExperienceItem>
+          <Position>Organizing Lead</Position>
+          <Company>Adamjee Cantonment College IT Club</Company>
+          <Duration>July 2020 – December 2022</Duration>
+          <DescriptionList>
+            <li>Organized workshops and seminars, fostering collaborative learning.</li>
+            <li>Produced promotional materials boosting event attendance by 200+ students.</li>
+            <li>Led a website overhaul to enhance functionality and user experience.</li>
+          </DescriptionList>
+        </ExperienceItem>
+      </ExperienceSection>
+
+      {/* Hobbies */}
+      <SectionTitle>Hobbies</SectionTitle>
+      <ExperienceSection>
+        <ExperienceItem>
+          <DescriptionList>
+            <li>PC Building</li>
+            <li>Cooking</li>
+            <li>Travelling</li>
+          </DescriptionList>
+        </ExperienceItem>
+      </ExperienceSection>
+    </ExperienceContainer>
   );
 }
