@@ -1,0 +1,116 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a192f;
+  color: #ccd6f6;
+  line-height: 1.6;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar & Footer Padding */
+nav, footer {
+  padding: 1.5rem 2rem;
+}
+
+/* Section Styling */
+section {
+  padding: 6rem 2rem;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1rem;
+  }
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: #64ffda;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Paragraphs */
+p {
+  margin: 0;
+  color: #8892b0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Links */
+a {
+  color: #64ffda;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #52d1b2;
+}
+
+/* Buttons */
+button {
+  background-color: #64ffda;
+  color: #0a192f;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #52d1b2;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+}
+
+/* Dark Mode Transition */
+body.dark-mode {
+  background-color: #0a192f;
+  color: #ccd6f6;
+}

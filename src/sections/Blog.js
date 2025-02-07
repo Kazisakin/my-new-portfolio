@@ -1,141 +1,77 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+// src/sections/Blog.js
+import React from "react";
+import { FaRegNewspaper } from "react-icons/fa";
 
-// Styled Components
-const BlogSection = styled.section`
-  min-height: 100vh;
-  padding: 4rem 2rem;
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Title = styled.h2`
-  font-size: 2rem;
-  color: var(--color-accent);
-  margin-bottom: 2rem;
-`;
-
-const BlogGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 900px;
-`;
-
-const BlogCard = styled.div`
-  background: #112240;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const BlogImage = styled(LazyLoadImage)`
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-`;
-
-const BlogTitle = styled.h3`
-  font-size: 1.2rem;
-  color: var(--color-white);
-  margin-bottom: 0.5rem;
-`;
-
-const BlogExcerpt = styled.p`
-  font-size: 0.9rem;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-`;
-
-const BlogDate = styled.small`
-  color: var(--color-accent);
-`;
-
-const ReadMoreButton = styled.a`
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease-in-out;
-
-  &:hover {
-    background: var(--color-accent);
-    color: var(--color-bg);
-  }
-`;
-
-// Demo Blog Posts
-const demoPosts = [
-  {
-    id: 1,
-    title: "Building a Modern React Portfolio",
-    excerpt: "Learn how to create a sleek developer portfolio using React and Styled Components.",
-    date: "January 20, 2025",
-    image: "/images/blog-placeholder.jpg",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Mastering CSS Grid & Flexbox",
-    excerpt: "A complete guide to building responsive layouts with CSS Grid and Flexbox.",
-    date: "February 10, 2025",
-    image: "/images/blog-placeholder.jpg",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "10 JavaScript Tricks Every Developer Should Know",
-    excerpt: "Improve your JavaScript skills with these powerful tips and tricks.",
-    date: "March 5, 2025",
-    image: "/images/blog-placeholder.jpg",
-    link: "#",
-  },
-];
-
-// Blog Component
-export default function Blog() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Simulating fetching posts from API
-  useEffect(() => {
-    setTimeout(() => {
-      setPosts(demoPosts);
-      setLoading(false);
-    }, 1000);
-  }, []);
-
+const Blog = () => {
   return (
-    <BlogSection id="blog">
-      <Title>Blog</Title>
-      {loading && <p>Loading posts...</p>}
-      <BlogGrid>
-        {posts.map((post) => (
-          <BlogCard key={post.id}>
-            <BlogImage alt={post.title} src={post.image} effect="blur" />
-            <BlogTitle>{post.title}</BlogTitle>
-            <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-            <BlogDate>{post.date}</BlogDate>
-            <ReadMoreButton href={post.link}>Read More</ReadMoreButton>
-          </BlogCard>
-        ))}
-      </BlogGrid>
-    </BlogSection>
+    <div className="blog container">
+      <h2>Latest Articles</h2>
+      <div className="blog-grid">
+        <article className="blog-card">
+          <div className="blog-icon">
+            <FaRegNewspaper size={32} />
+          </div>
+          <h3>Optimizing Performance in React Applications</h3>
+          <p>
+            Explore modern techniques to optimize React performance using code splitting, lazy loading, and memoization.
+          </p>
+        </article>
+        <article className="blog-card">
+          <div className="blog-icon">
+            <FaRegNewspaper size={32} />
+          </div>
+          <h3>Full-Stack Trends in 2025</h3>
+          <p>
+            Discover emerging trends in full-stack development, including microservices and serverless architectures.
+          </p>
+        </article>
+        <article className="blog-card">
+          <div className="blog-icon">
+            <FaRegNewspaper size={32} />
+          </div>
+          <h3>Leveraging GraphQL for Efficient APIs</h3>
+          <p>
+            Learn how GraphQL streamlines data fetching and minimizes over-fetching in modern applications.
+          </p>
+        </article>
+      </div>
+      <style jsx>{`
+        .blog {
+          text-align: center;
+        }
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+        .blog-card {
+          background: rgba(100, 255, 218, 0.1);
+          border: 1px solid var(--accent-color);
+          padding: 1.5rem;
+          border-radius: 10px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeInUp 0.8s forwards;
+        }
+        .blog-card:hover {
+          transform: translateY(0);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .blog-icon {
+          margin-bottom: 1rem;
+          color: var(--accent-color);
+        }
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default Blog;

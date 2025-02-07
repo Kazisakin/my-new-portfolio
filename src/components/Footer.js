@@ -1,19 +1,20 @@
+// src/components/Footer.js
+
 import React from "react";
-import styled from "styled-components";
 
-const FooterContainer = styled.footer`
-  text-align: center;
-  padding: 1rem;
-  background: rgba(10, 25, 47, 0.9);
-  color: var(--color-text);
-  font-size: 0.9rem;
-`;
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <FooterContainer>
-      <p>Built with ❤️ by Your Name</p>
-      <p>© 2025 Your Name. All rights reserved.</p>
-    </FooterContainer>
+    <footer
+      style={{
+        padding: "1rem",
+        textAlign: "center",
+        background: "#333",
+        color: "#fff"
+      }}
+    >
+      <p>&copy; {new Date().getFullYear()} My Portfolio</p>
+    </footer>
   );
-}
+};
+
+export default Footer;

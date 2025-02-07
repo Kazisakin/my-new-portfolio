@@ -1,104 +1,141 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-// Styled Components
-const AboutContainer = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 4rem 2rem;
-  min-height: 100vh; /* Ensure section takes full screen height */
-  background: var(--color-bg);
-  scroll-margin-top: 80px; /* Adjust for fixed navbar */
+const About = () => {
+  const [typedText, setTypedText] = useState("");
+  const fullText = "I'm a Full-Stack Web Developer & Software Engineer.";
+  const [index, setIndex] = useState(0);
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
-  }
-`;
+  // Typewriter Effect
+  useEffect(() => {
+    if (index < fullText.length) {
+      setTimeout(() => {
+        setTypedText((prev) => prev + fullText[index]);
+        setIndex(index + 1);
+      }, 100);
+    }
+  }, [index]);
 
-const Content = styled(motion.div)`
-  max-width: 600px;
-`;
+  return (
+    <motion.div
+      className="about-container"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <h2 className="glitch" data-text="About Me">
+        About Me
+      </h2>
+      <p className="typewriter">{typedText}</p>
+      <div className="about-content">
+        <p className="fade-in">
+          🚀 Passionate about building **scalable web solutions** that push the boundaries of creativity and efficiency.
+        </p>
+        <p className="fade-in">
+          💡 Expertise in **JavaScript, React, Next.js, Node.js, and MongoDB** with a strong foundation in performance optimization.
+        </p>
+        <p className="fade-in">
+          🌎 Bridging the gap between **design & development**, creating experiences that leave an impact.
+        </p>
+        <p className="fade-in">
+          🛠️ Open-source contributor, mentor, and lifelong learner with a love for automation and AI.
+        </p>
+        <p className="fade-in">
+          🎨 Enjoys working on futuristic UI/UX experiences with **animations, 3D, and motion graphics**.
+        </p>
+      </div>
 
-const Title = styled.h2`
-  font-size: 2rem;
-  color: var(--color-accent);
-  margin-bottom: 1rem;
-`;
-
-const Description = styled.p`
-  font-size: 1rem;
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-`;
-
-const SkillsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-`;
-
-const SkillChip = styled(motion.span)`
-  background: rgba(100, 255, 218, 0.1);
-  color: var(--color-accent);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background: rgba(100, 255, 218, 0.4);
-  }
-`;
-
-const ProfileImage = styled(motion.div)`
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--color-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-// Animations
-const fadeInVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+      <style jsx>{`
+        .about-container {
+          text-align: center;
+          padding: 3rem;
+          max-width: 900px;
+          margin: auto;
+          border-radius: 16px;
+          background: rgba(10, 10, 10, 0.9);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          position: relative;
+          overflow: hidden;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h2.glitch {
+          font-size: 3rem;
+          position: relative;
+          color: white;
+          font-weight: 900;
+          text-transform: uppercase;
+        }
+        h2.glitch:before,
+        h2.glitch:after {
+          content: attr(data-text);
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0.7;
+        }
+        h2.glitch:before {
+          color: #ff004f;
+          transform: translate(-3px, -3px);
+        }
+        h2.glitch:after {
+          color: #00eaff;
+          transform: translate(3px, 3px);
+        }
+        .typewriter {
+          font-size: 1.5rem;
+          color: #64ffda;
+          font-family: "Courier New", monospace;
+          overflow: hidden;
+          white-space: nowrap;
+          width: 100%;
+          margin: 20px 0;
+          border-right: 2px solid #64ffda;
+          animation: blink 0.75s infinite;
+        }
+        @keyframes blink {
+          50% {
+            border-color: transparent;
+          }
+        }
+        .about-content {
+          max-height: 350px;
+          overflow-y: auto;
+          padding: 1.5rem;
+          margin-top: 1rem;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          text-align: left;
+          color: #ccd6f6;
+          font-size: 1.2rem;
+        }
+        .about-content p {
+          margin-bottom: 1rem;
+          line-height: 1.6;
+          transition: all 0.3s ease-in-out;
+        }
+        .about-content p:hover {
+          color: #64ffda;
+          transform: scale(1.02);
+        }
+        .fade-in {
+          opacity: 0;
+          animation: fadeInText 1s ease-in forwards;
+        }
+        @keyframes fadeInText {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </motion.div>
+  );
 };
 
-// About Component
-export default function About() {
-  return (
-    <AboutContainer id="about">
-      <Content variants={fadeInVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-        <Title>About Me</Title>
-        <Description>
-          Hi, I'm a passionate developer who loves building elegant and efficient software solutions.
-          I specialize in frontend and backend technologies, constantly learning and improving my skills.
-        </Description>
-        <SkillsWrapper>
-          {["React", "Node.js", "JavaScript", "TypeScript", "GraphQL", "Docker"].map((skill) => (
-            <SkillChip key={skill}>{skill}</SkillChip>
-          ))}
-        </SkillsWrapper>
-      </Content>
-      <ProfileImage variants={fadeInVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-        <img src="/images/profile-placeholder.jpg" alt="Profile" />
-      </ProfileImage>
-    </AboutContainer>
-  );
-}
+export default About;

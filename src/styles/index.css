@@ -1,0 +1,55 @@
+/* ========== Global Styles ========== */
+body {
+  overflow-x: hidden; /* Hide default horizontal scrollbar */
+  overflow-y: hidden; /* Hide vertical scrolling */
+  height: 100vh;
+  width: 100vw;
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+  background-color: #0a192f;
+  color: #ccd6f6;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== Horizontal Scroll Container ========== */
+.horizontal-scroll-container {
+  display: flex; /* Arrange sections side by side */
+  flex-direction: row; /* Ensure horizontal alignment */
+  width: max-content; /* Adapt to number of sections */
+  height: 100vh;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; /* Enable touch scrolling */
+}
+
+/* Hide scrollbar */
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure sections are placed side by side */
+section {
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* Each section takes full width */
+  height: 100vh;
+  flex-shrink: 0; /* Prevent sections from shrinking */
+  padding: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Ensure smooth scrolling */
+.horizontal-scroll-container {
+  scroll-behavior: smooth;
+}
