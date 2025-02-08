@@ -1,16 +1,25 @@
 // src/styles/Theme.js
+
 export const darkTheme = {
-  body: "#0a192f",
-  text: "#ccd6f6",
-  accent: "#64ffda",
-  textSecondary: "#8892b0",
-  buttonText: "#0a192f",
+  body: "#fffcff",       // Bright yellow background
+  text: "#2C3E50",       // Dark blue-gray text for contrast
+  heading: "#E67E22",    // Vibrant orange for headings
+  paragraph: "#34495E",  // Dark grayish-blue for paragraphs
+  link: "#E67E22",       // Matching link color
+  linkHover: "#D35400",  // Darker orange for hover state
+  buttonBg: "#E67E22",   // Button background (orange)
+  buttonText: "#FFFFFF", // White button text
+  buttonHoverBg: "#D35400",
 };
 
 export const lightTheme = {
-  body: "#ffffff",
-  text: "#0a192f",
-  accent: "#0070f3",
-  textSecondary: "#444444",
-  buttonText: "#ffffff",
+  body: "#fffcff",       // Soft yellow background for light mode
+  text: "#2C3E50",
+  heading: "#E67E22",
+  paragraph: "#34495E",
+  link: "#E67E22",
+  linkHover: "#D35400",
+  buttonBg: "#E67E22",
+  buttonText: "#FFFFFF",
+  buttonHoverBg: "#D35400",
 };

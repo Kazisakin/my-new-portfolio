@@ -1,12 +1,16 @@
 import React from 'react';
 import Particles from "react-tsparticles";
+import { useTheme } from "styled-components";
 
 const ParticlesBackground = () => {
+  const theme = useTheme();
+
   return (
     <Particles
       options={{
         fullScreen: { enable: true },
-        background: { color: { value: "#0a192f" } },
+        // Use the theme's background color instead of a hardcoded value
+        background: { color: { value: theme.body } },
         fpsLimit: 60,
         interactivity: {
           events: {
@@ -16,8 +20,9 @@ const ParticlesBackground = () => {
           modes: { repulse: { distance: 100, duration: 0.4 } },
         },
         particles: {
-          color: { value: "#64ffda" },
-          links: { enable: true, color: "#64ffda", distance: 150 },
+          // Use the theme's link color for particles and their connections
+          color: { value: theme.link },
+          links: { enable: true, color: theme.link, distance: 150 },
           collisions: { enable: true },
           move: {
             enable: true,

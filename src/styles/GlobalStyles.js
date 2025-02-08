@@ -1,45 +1,44 @@
 // src/styles/GlobalStyles.js
+
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  :root {
-    --body-bg: ${({ theme }) => theme?.body || "#0a192f"};
-    --text-color: ${({ theme }) => theme?.text || "#ccd6f6"};
-    --accent-color: ${({ theme }) => theme?.accent || "#64ffda"};
-    --text-secondary: ${({ theme }) => theme?.textSecondary || "#8892b0"};
-    --button-text: ${({ theme }) => theme?.buttonText || "#0a192f"};
-    --transition-speed: 0.3s;
-  }
-
+  /* RESET & BOX-SIZING */
   *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* GLOBAL STYLES */
+  body {
+    background-color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   }
 
-  body {
-    font-family: "Inter", sans-serif;
-    background-color: var(--body-bg);
-    color: var(--text-color);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: background var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
-    cursor: url('/assets/images/cursor.png'), auto;
+  html {
+    scroll-behavior: smooth;
   }
 
   nav, footer {
     padding: 1.5rem 2rem;
   }
 
+  section {
+    padding: 6rem 2rem;
+  }
+  @media (max-width: 768px) {
+    section { padding: 4rem 1rem; }
+  }
+
+  /* HEADINGS */
   h1, h2, h3, h4, h5, h6 {
-    color: var(--accent-color);
+    margin: 0;
+    color: ${({ theme }) => theme.heading};
     font-weight: bold;
-    margin-bottom: 0.5rem;
   }
   h1 { font-size: 3rem; }
   h2 { font-size: 2.5rem; }
@@ -48,9 +47,11 @@ const GlobalStyles = createGlobalStyle`
     h2 { font-size: 2rem; }
   }
 
+  /* PARAGRAPHS */
   p {
+    margin: 0;
     margin-bottom: 1rem;
-    color: var(--text-secondary);
+    color: ${({ theme }) => theme.paragraph};
     font-size: 1.1rem;
     line-height: 1.8;
   }
@@ -58,27 +59,37 @@ const GlobalStyles = createGlobalStyle`
     p { font-size: 1rem; }
   }
 
+  /* LINKS */
   a {
-    color: var(--accent-color);
+    color: ${({ theme }) => theme.link};
     text-decoration: none;
-    transition: color var(--transition-speed) ease-in-out;
+    transition: color 0.3s ease-in-out;
   }
-  a:hover, a:focus { color: #52d1b2; }
+  a:hover {
+    color: ${({ theme }) => theme.linkHover};
+  }
 
+  /* BUTTONS */
   button {
-    background-color: var(--accent-color);
-    color: var(--button-text);
+    background-color: ${({ theme }) => theme.buttonBg};
+    color: ${({ theme }) => theme.buttonText};
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color var(--transition-speed) ease-in-out, transform 0.2s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
   }
-  button:hover { background-color: #52d1b2; transform: scale(1.05); }
-  button:active { transform: scale(0.98); }
+  button:hover {
+    background-color: ${({ theme }) => theme.buttonHoverBg};
+    transform: scale(1.05);
+  }
+  button:active {
+    transform: scale(0.98);
+  }
 
+  /* CUSTOM SCROLLBAR (Optional) */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -88,7 +99,7 @@ const GlobalStyles = createGlobalStyle`
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
+    background-color: ${({ theme }) => theme.link};
     border-radius: 4px;
   }
 

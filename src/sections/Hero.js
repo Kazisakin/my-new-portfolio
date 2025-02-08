@@ -7,8 +7,7 @@ const Hero = ({ toggleTheme }) => {
       <h1>Hello, I'm Alex Developer</h1>
       <p>
         I craft scalable full-stack applications and innovative software solutions.
-      </p>
-      <button onClick={toggleTheme}>Toggle Theme</button>
+      </p>     
       <style jsx>{`
         .hero {
           text-align: center;

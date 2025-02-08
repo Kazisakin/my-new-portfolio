@@ -1,4 +1,5 @@
 // pages/index.js
+
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../src/components/Navbar";
@@ -20,7 +21,6 @@ export default function Home({ toggleTheme }) {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    // Variables for mouse drag momentum
     let isMouseDown = false;
     let startX = 0;
     let scrollLeftStart = 0;
@@ -29,7 +29,6 @@ export default function Home({ toggleTheme }) {
     let velocity = 0;
     let momentumId;
 
-    // Mouse event handlers for desktop dragging
     const onMouseDown = (e) => {
       isMouseDown = true;
       container.classList.add("dragging");
@@ -38,19 +37,16 @@ export default function Home({ toggleTheme }) {
       lastMouseX = e.pageX;
       lastTime = Date.now();
       velocity = 0;
-      if (momentumId) {
-        cancelAnimationFrame(momentumId);
-      }
+      if (momentumId) cancelAnimationFrame(momentumId);
     };
 
     const onMouseMove = (e) => {
       if (!isMouseDown) return;
       e.preventDefault();
       const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 3; // Adjust the multiplier for scroll speed
+      const walk = (x - startX) * 3;
       container.scrollLeft = scrollLeftStart - walk;
       
-      // Compute velocity (pixels per ms)
       const currentTime = Date.now();
       const dt = currentTime - lastTime;
       if (dt > 0) {
@@ -64,7 +60,6 @@ export default function Home({ toggleTheme }) {
     const onMouseUp = () => {
       isMouseDown = false;
       container.classList.remove("dragging");
-      // Start momentum scrolling with the current velocity
       momentumScroll(velocity);
     };
 
@@ -76,20 +71,18 @@ export default function Home({ toggleTheme }) {
       }
     };
 
-    // Apply momentum scrolling after mouse release
     const momentumScroll = (initialVelocity) => {
       let v = initialVelocity;
-      const decay = 0.95; // Deceleration factor per frame
+      const decay = 0.95;
       const frame = () => {
-        if (Math.abs(v) < 0.1) return; // Stop when velocity is low
-        container.scrollLeft -= v * 20; // Multiply v for desired momentum effect
+        if (Math.abs(v) < 0.1) return;
+        container.scrollLeft -= v * 20;
         v *= decay;
         momentumId = requestAnimationFrame(frame);
       };
       frame();
     };
 
-    // Touch event handlers for mobile
     let isTouching = false;
     let touchStartX = 0;
     let touchScrollLeft = 0;
@@ -110,19 +103,16 @@ export default function Home({ toggleTheme }) {
       isTouching = false;
     };
 
-    // Wheel event: Convert vertical scroll to horizontal scrolling
     const onWheel = (e) => {
       e.preventDefault();
       container.scrollLeft += e.deltaY;
     };
 
-    // Active section update based on scroll position
     const onScroll = () => {
       const index = Math.round(container.scrollLeft / container.clientWidth);
       setActiveSection(index);
     };
 
-    // Attach event listeners
     container.addEventListener("mousedown", onMouseDown);
     container.addEventListener("mousemove", onMouseMove);
     container.addEventListener("mouseup", onMouseUp);
@@ -133,7 +123,6 @@ export default function Home({ toggleTheme }) {
     container.addEventListener("wheel", onWheel, { passive: false });
     container.addEventListener("scroll", onScroll);
 
-    // Cleanup
     return () => {
       container.removeEventListener("mousedown", onMouseDown);
       container.removeEventListener("mousemove", onMouseMove);
@@ -200,7 +189,6 @@ export default function Home({ toggleTheme }) {
           position: relative;
           z-index: 1;
           cursor: grab;
-          /* Enable smooth scrolling behavior */
           scroll-behavior: smooth;
         }
         .horizontal-scroll-container.dragging {
@@ -215,11 +203,9 @@ export default function Home({ toggleTheme }) {
           align-items: center;
           justify-content: center;
           padding: 2rem;
-          /* Optional fade-in animation for visual appeal */
           opacity: 0;
           animation: fadeIn 1s forwards;
         }
-        /* Stagger animation delays for each section */
         #section-0 { animation-delay: 0.2s; }
         #section-1 { animation-delay: 0.4s; }
         #section-2 { animation-delay: 0.6s; }
@@ -228,9 +214,7 @@ export default function Home({ toggleTheme }) {
         #section-5 { animation-delay: 1.2s; }
         #section-6 { animation-delay: 1.4s; }
         @keyframes fadeIn {
-          to {
-            opacity: 1;
-          }
+          to { opacity: 1; }
         }
       `}</style>
     </>
